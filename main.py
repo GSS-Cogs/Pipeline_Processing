@@ -1,2 +1,4 @@
 API_TOKEN = os.getenv('SECRET')
-print(API_TOKEN)
+file = open('testfile.txt','w') 
+file.write(API_TOKEN) 
+file.close()

@@ -27,11 +27,11 @@ pipeline {
                             sh "jupytext --to notebook ${DATASET_DIR}/*.py"
                         }
                         sh "jupyter-nbconvert --output-dir=${DATASET_DIR}/out --ExecutePreprocessor.timeout=None --execute '${DATASET_DIR}/main.ipynb'"
-                    }
-                  }
+                        }
+                   }
                 }
             }
         } 
     }
-    }
 }
+

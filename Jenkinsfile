@@ -23,9 +23,8 @@ pipeline {
                 withCredentials([string(credentialsId: 'github_token', variable: 'SECRET')]) { //set SECRET with the credential content
                   script {
                     if (fileExists("${DATASET_DIR}/main.py")) {
-                            sh "jupytext --to notebook ${DATASET_DIR}/*.py"
-                        }
-                        sh "jupyter-nbconvert --output-dir=${DATASET_DIR}/out --ExecutePreprocessor.timeout=None --execute '${DATASET_DIR}/main.ipynb'"
+                            sh "python ${DATASET_DIR}/*.py"
+                    }
                     }
                 }
             }

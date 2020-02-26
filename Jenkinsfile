@@ -23,7 +23,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'github_token', variable: 'SECRET')]) { //set SECRET with the credential content
                   script {
                     if (fileExists("${DATASET_DIR}/main.py")) {
-                            sh "python ${DATASET_DIR}/*.py"
+                            sh "python -u ${DATASET_DIR}/*.py"
                     }
                     }
                 }

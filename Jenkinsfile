@@ -20,15 +20,16 @@ pipeline {
                 }
             }
             steps {
-                withCredentials([usernamePassword(credentialsId: 'credUserName', usernameVariable: 'NUSER', passwordVariable: 'NPASS')]) {
+                withCredentials([string(credentialsId: 'github_token', variable: 'SECRET')]) { //set SECRET with the credential content
                   script {
                     ansiColor('xterm') {
                         if (fileExists("${DATASET_DIR}/main.py")) {
                             sh "jupytext --to notebook ${DATASET_DIR}/*.py"
                         }
                         sh "jupyter-nbconvert --output-dir=${DATASET_DIR}/out --ExecutePreprocessor.timeout=None --execute '${DATASET_DIR}/main.ipynb'"
+                        }
                     }
-                }}
+                }
             }
         } 
     }
